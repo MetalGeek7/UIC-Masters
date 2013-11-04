@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 20, 2012 3:07:20 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="newEntities.UserSecurity" table="user_security" catalog="songrecosystem">
+        <composite-id name="id" class="newEntities.UserSecurityId">
+            <key-property name="secureUserId" type="string">
+                <column name="secure_user_id" length="15" />
+            </key-property>
+            <key-property name="secureLoginName" type="string">
+                <column name="secure_login_name" length="15" />
+            </key-property>
+            <key-property name="securePassword" type="string">
+                <column name="secure_password" length="15" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="userData" class="newEntities.UserData" update="false" insert="false" fetch="select">
+            <column name="secure_user_id" length="15" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

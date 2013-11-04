@@ -1,0 +1,174 @@
+//created on: Nov 23, 2012
+package rules
+
+//list any import classes here.
+
+import newEntities.UserData;
+import newEntities.SongData;
+import newEntities.SongRatingId;
+import newEntities.SongArtists;
+import newEntities.SongAlbums;
+import newEntities.ArtistRatingId;
+import newEntities.AlbumsLikedId;
+
+import java.sql.Statement;
+global java.lang.Integer albumCount;
+//declare any global variables here
+global java.sql.Statement statement;
+
+rule "Your First Rule"
+agenda-group "Likes"
+auto-focus false
+    when
+        //conditions
+        $u:UserData()
+        $s:SongData()
+    then
+        //actions
+        System.out.println("Focus True");
+         int rs=statement.executeUpdate("Insert into songs_liked(user_id,song_id) VALUES("+"'"+$u.getUserId()+"','"+$s.getSongId()+"')");
+       retract($u);
+       retract($s);
+        System.out.println("retracted");
+
+
+
+end
+
+rule "Update Song Rating Rule"
+    //include attributes such as "salience" here...
+agenda-group "Ratings"
+auto-focus false
+    when
+        //conditions
+        $r:SongRatingId()
+    then
+        //actions
+        System.out.println("Focus True");
+         int rs=statement.executeUpdate("Insert into song_rating(user_id,song_id,song_rating) VALUES("+"'"+$r.getUserId()+"','"+$r.getSongId()+"','"+$r.getSongRating()+"')");
+       retract($r);
+        System.out.println("retracted");
+
+
+end
+
+rule "Songs Shared Update"
+agenda-group "SongsShared"
+auto-focus false
+    when
+        //conditions
+        $u:UserData()
+        $s:SongData()
+    then
+        //actions
+        System.out.println("Focus True for rule 2" );
+         int rs=statement.executeUpdate("Insert into songs_shared(user_id,song_id) VALUES("+"'"+$u.getUserId()+"','"+$s.getSongId()+"')");
+       retract($u);
+       retract($s);
+        System.out.println("retracted from rule2");
+
+
+
+end
+
+rule "Songs Purchased Update"
+agenda-group "SongsPurchased"
+auto-focus false
+    when
+        //conditions
+        $u:UserData()
+        $s:SongData()
+    then
+        //actions
+        System.out.println("Focus True for rule 2" );
+         int rs=statement.executeUpdate("Insert into songs_purchased(user_id,song_id) VALUES("+"'"+$u.getUserId()+"','"+$s.getSongId()+"')");
+       retract($u);
+       retract($s);
+        System.out.println("retracted from rule2");
+
+
+
+end
+rule "Artist Like Update"
+agenda-group "ArtistLiked"
+auto-focus false
+    when
+        //conditions
+        $u:UserData()
+        $s:SongArtists()
+    then
+        //actions
+        System.out.println("Focus True for rule ArtistLiked" );
+         int rs=statement.executeUpdate("Insert into artists_liked(user_id,artist_id) VALUES("+"'"+$u.getUserId()+"','"+$s.getArtistId()+"')");
+       retract($u);
+       retract($s);
+        System.out.println("retracted from rule2");
+
+
+
+end
+rule "Album Like Update"
+agenda-group "AlbumLiked"
+auto-focus false
+    when
+        //conditions
+        $u:UserData()
+        $s:SongAlbums()
+    then
+        //actions
+        System.out.println("Focus True for rule AlbumLiked" );
+         int rs=statement.executeUpdate("Insert into albums_liked(user_id,album_id) VALUES("+"'"+$u.getUserId()+"','"+$s.getAlbumId()+"')");
+       retract($u);
+       retract($s);
+        System.out.println("retracted from Album lIked");
+
+end
+
+rule "Artist Rating Update"
+agenda-group "ArtistRating"
+auto-focus false
+    when
+        //conditions
+       $a:ArtistRatingId()
+    then
+        //actions
+        System.out.println("Focus True for rule ArtistRating" );
+         int rs=statement.executeUpdate("Insert into artist_rating(user_id,artist_id,artist_rating) VALUES("+"'"+$a.getUserId()+"','"+$a.getArtistId()+"','"+$a.getArtistRating()+"')");
+       retract($a);
+
+        System.out.println("retracted from Artist Rating Update");
+
+end
+
+/*rule "User-AlbumLiked Count Update"
+agenda-group "UserAlbumCount"
+auto-focus false
+salience 101
+    when
+        //conditions
+       $a:SongAlbums()
+       $s:AlbumsLikedId(albumId==$a.getAlbumId() && userId==currentUserId)
+    then
+        //actions
+        System.out.println("Focus True for rule User-AlbumLiked" );
+        int rs=statement.execute(" into albums_liked(user_id,album_id,artist_rating) VALUES("+"'"+$a.getUserId()+"','"+$a.getArtistId()+"','"+$a.getArtistRating()+"')");
+	    count++;
+        System.out.println("retracted from Artist Rating Update");
+
+end*/
+
+/*rule "User-AlbumLiked 2 Count Update"
+agenda-group "UserAlbumCount"
+auto-focus false
+salience 100
+    when
+        //conditions
+       $a:SongAlbums()
+       $s:AlbumsLikedId(userId!=currentUserId)
+    then
+        //actions
+        System.out.println("Focus True for rule User-AlbumLiked" );
+        // int rs=statement.execute(" into artist_rating(user_id,artist_id,artist_rating) VALUES("+"'"+$a.getUserId()+"','"+$a.getArtistId()+"','"+$a.getArtistRating()+"')");
+        System.out.println("retracted from Artist Rating Update");
+
+end*/

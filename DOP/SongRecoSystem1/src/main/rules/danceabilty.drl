@@ -1,0 +1,132 @@
+//created on: Nov 11, 2012
+package songrecosystem
+
+//list any import classes here.
+import newEntities.UserData;
+import newEntities.SongData;
+import newEntities.SongArtists;
+import newEntities.SongRating;
+import newEntities.SongRatingId;
+
+
+//declare any global variables here
+global   newEntities.SongArtists tempGlobal;
+
+global   newEntities.UserData current;
+
+rule "Your First Rule"
+
+    when
+        //conditions
+        $a:SongArtists()
+        $s:SongData(getSongDanceability()>0.8 && $a.getArtistId()==songArtists.getArtistId() && $a.getArtistLocation()==tempGlobal.getArtistLocation())
+    then
+        //actions
+        System.out.println("song "+$s.getSongDanceability() );
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+   
+    when
+       $a:SongArtists()
+        $s:SongData(songTempo>0.9 && $a.getArtistId()==songArtists.getArtistId() && $a.getArtistLocation()==tempGlobal.getArtistLocation())
+    then
+        //actions
+        System.out.println("Tempo "+$s.getSongTempo());
+
+end
+rule "Your Third Rule"
+    //include attributes such as "salience" here...
+   
+    when
+       $a:SongArtists()
+        $s:SongData(songEnergy>0.9 && $a.getArtistId()==songArtists.getArtistId() && $a.getArtistLocation()==tempGlobal.getArtistLocation())
+    then
+        //actions
+        System.out.println("Tempo "+$s.getSongTempo());
+
+end
+
+
+rule "Your Fourth Rule"
+    //include attributes such as "salience" here...
+   
+    when
+     
+        $s:SongData(songTempo>0.9  && songArtists.getArtistLocation()==tempGlobal.getArtistLocation())
+    then
+        //actions
+        System.out.println($s.getSongArtists().getArtistId() );
+
+end
+rule "SongRating"
+    //include attributes such as "salience" here...
+   salience 101
+    when
+     
+        $s:SongRating(songData.getSongDanceability()>0.95 && songData.getGenre().getGenreId()==current.getUserPreferredGenre(),$r:songData)
+    then
+        //actions
+        System.out.println($s.getSongData().getSongTitle()+" Danceable songs greater than 0.95 ");
+
+end
+
+rule "SongTempo"
+    //include attributes such as "salience" here...
+   salience 100
+    when
+     
+        $s:SongRating(songData.getSongTempo()>0.95 && songData.getGenre().getGenreId()==current.getUserPreferredGenre(),$r:songData)
+    then
+        //actions
+        System.out.println($s.getSongData().getSongTitle()+" Tempo song greater than 0.95");
+
+end
+
+rule "SongTempoDanceability"
+    //include attributes such as "salience" here...
+   salience 102
+    when
+     
+        $s:SongRating(songData.getSongTempo()>0.8 && songData.getSongDanceability()>0.8 && songData.getGenre().getGenreId()==current.getUserPreferredGenre(),$r:songData)
+    then
+        //actions
+        System.out.println("The song title is "+ $s.getSongData().getSongTitle()+" whose danceability is "+$s.getSongData().getSongDanceability()+" Tempo and Danceability song greater than 0.95");
+
+end
+rule "Song"
+    //include attributes such as "salience" here...
+   salience 102
+    when
+     
+        $s:SongRating(songData.getSongTempo()>0.8 && songData.getSongDanceability()>0.8 && songData.getGenre().getGenreId()==current.getUserPreferredGenre(),$r:songData)
+    then
+        //actions
+        System.out.println("The song title is "+ $s.getSongData().getSongTitle()+" whose danceability is "+$s.getSongData().getSongDanceability()+" Tempo and Danceability song greater than 0.95");
+
+end
+
+rule "SongLocation"
+    //include attributes such as "salience" here...
+   salience 103
+    when
+     
+        //$s:SongRating(songData.getSongArtists().getArtistLocation()==current.getUserLocation() && songData.getSongsPurchaseds())
+        
+    then
+        //actions
+      //  System.out.println("The song title is "+ $s.getSongData().getSongTitle()+" whose danceability is "+$s.getSongData().getSongDanceability()+" Tempo and Danceability song greater than 0.95");
+
+end
+rule "LOC"
+    //include attributes such as "salience" here...
+   salience 90
+    when
+        $s:SongRating(songData.getSongArtists().getArtistLocation() == current.getUserLocation() && songData.getGenre().getGenreId()==current.getUserPreferredGenre())
+    then
+        //actions
+        System.out.println("Recommened artists: " + $s.getSongData().getSongArtists().getArtistName() + " Location: " + $s.getSongData().getSongArtists().getArtistLocation());
+end
+

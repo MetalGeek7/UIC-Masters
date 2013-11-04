@@ -1,0 +1,37 @@
+//created on: Nov 8, 2012
+package songrecosystem
+
+//list any import classes here.
+import newEntities.UserData;
+import newEntities.SongData;
+import newEntities.SongArtists;
+import newEntities.SongRating;
+
+//declare any global variables here
+
+global   newEntities.SongArtists location;
+global  java.lang.Integer count;
+
+rule "Your First Rule"
+    when
+        //condition
+      // $u:UserData(userLocation==current.getUserLocation() && userPreferredGenre==current.getUserPreferredGenre())
+   $s:SongData()
+    //&& artistId==$s.getSongArtists().getArtistId())
+    $a:SongArtists( artistId==$s.getSongArtists().getArtistId() && artistLocation==location.getArtistLocation())//artistLocation==location)
+    then
+        //actions;
+        
+        System.out.println("Matched "+$a.getArtistId()+" "+$a.getArtistLocation());      
+
+end
+
+rule "Your Second Rule"
+    when
+     $r:SongRating()
+    then
+        //actions;
+        
+        System.out.println("SONGRATIING");      
+
+end

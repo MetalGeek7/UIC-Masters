@@ -1,0 +1,43 @@
+CC=g++
+CFLAGS=-Wall -g                                                                                                                                                    
+CERROR=foo
+
+string:String.cpp
+	$(CC) $(CFLAGS) -c String.cpp -o String 2>$(CERROR)
+
+linkedlist: LinkedList.cpp
+	$(CC) $(CFLAGS) -c LinkedList.cpp -o LinkedList 2>$(CERROR)
+
+artist: Artist.cpp
+	$(CC) $(CFLAGS) -c Artist.cpp -o Artist 2>$(CERROR)
+
+painting: Painting.cpp
+	$(CC) $(CFLAGS) -c Painting.cpp -o Painting 2>$(CERROR)
+
+portrait: Portrait.cpp
+	$(CC) $(CFLAGS) -c Portrait.cpp -o Portrait 2>$(CERROR)
+
+landscape: Landscape.cpp
+	$(CC) $(CFLAGS) -c Landscape.cpp -o Landscape 2>$(CERROR)
+
+stilllife: Stilllife.cpp
+	$(CC) $(CFLAGS) -c Stilllife.cpp -o Stilllife 2>$(CERROR)
+
+hw1: hw1.cpp painting linked_list artist
+	@echo "Compiler       : $(CC)"
+	@echo "Compiler Flags : $(CFLAGS)"
+	@echo "Error File     : $(CERROR)"
+	@echo "Compiling hw1.cpp"
+	$(CC) $(CFLAGS) hw1.cpp painting linked_list artist -o hw1 2>$(CERROR)
+
+all: hw1
+
+test: testclient.cpp string linkedlist artist painting portrait landscape stilllife
+	 $(CC) $(CFLAGS) testclient.cpp -g -o testclient String LinkedList Artist Painting Portrait Landscape Stilllife 2>$(CERROR)
+	 ./testclient
+
+hw2: string linkedlist artist painting portrait landscape stilllife
+	$(CC) $(CFLAGS) PaintingManager.cpp -g -o PaintingManager String LinkedList Artist Painting Portrait Landscape Stilllife 2>$(CERROR)
+
+run: clean all
+	./hw1 <test_input >output

@@ -1,0 +1,89 @@
+//created on: Nov 5, 2012
+package songrecosystem
+
+//list any import classes here.
+import newEntities.UserData;
+import newEntities.Genre;
+import newEntities.SongArtists;
+import newEntities.SongData;
+import newEntities.UserPlaycount;
+import newEntities.UserPlaycountId;
+import newEntities.SongRatingId;
+import newEntities.SongRating;
+//declare any global variables here
+global  newEntities.UserData current;
+
+
+
+/*rule "Your First Rule"
+auto-focus false
+    when
+    
+    $a:SongArtists(artistLocation==current.getUserLocation()  && genre.getGenreId()==current.getUserPreferredGenre())
+    $s:SongData($a.artistId==songArtists.artistId)
+      
+    then
+        //actions
+      //  System.out.println($s.getSongTitle());
+      //  System.out.println("------------------------------------------------");
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    auto-focus false
+    when
+        //conditions
+       // $s:SongData()
+        $a:SongArtists(artistLocation=="India" && genre.getGenreName()=="Western")
+    then
+        //actions
+     //  System.out.println("hi "+$a.getArtistId()+" "+current.getUserLocation()+current.getUserPreferredGenre() );//corect
+   //   System.out.println($a.getArtistLocation()+" "+$a.getGenre().getGenreName());
+
+end
+
+rule "same genre"
+auto-focus false
+when
+$s:SongData(genre.getGenreId()==current.getUserPreferredGenre())
+
+
+then
+//System.out.println($s.getSongTitle());
+end
+
+rule "user playcount"
+auto-focus false
+when 
+$u:UserPlaycount(id.getUserId()==current.getUserId(),$songData:songData)
+$s:SongData($songData.getGenre().getGenreId()==genre.getGenreId())
+
+then
+//System.out.println("____"+$s.getSongTitle());//correct one
+//System.out.println($songData.getGenre().getGenreId()+" _____________________");
+
+end
+
+rule "testing"
+auto-focus false
+when 
+//$u:UserPlaycount(id.getUserId()==current.getUserId(),$songData:songData)
+$u:UserPlaycount($songData:songData)
+//$s:SongData($songData.getGenre().getGenreId()==genre.getGenreId())
+
+then
+//System.out.println("____"+$s.getSongTitle());
+//System.out.println($songData.getGenre().getGenreId()+" _____________________"+$u.getId().getUserId());
+
+end*/
+
+rule "Popular Songs"
+
+when 
+$s:SongData()
+$total:Number(intValue>2)
+		from accumulate(SongRating($s.getSongId()==id.getSongId(),$rating:id.getSongRating()),		average($rating) )
+then
+System.out.println("HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"+$s.getSongId());
+end

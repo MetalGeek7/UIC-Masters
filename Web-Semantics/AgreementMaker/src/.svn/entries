@@ -1,0 +1,71 @@
+10
+
+dir
+2649
+svn+ssh://advis.cs.uic.edu/home/svn/am1-repos/branches/PatitionMatching/AgreementMaker/src
+svn+ssh://advis.cs.uic.edu/home/svn/am1-repos
+
+
+
+2012-12-08T00:31:43.559542Z
+2649
+cosmin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+7382cb04-bbc8-4b6b-befe-3e25d6a70fed
+
+am
+dir
+
+eu
+dir
+
+log4j.properties
+file
+
+
+
+
+2012-12-08T00:36:06.598000Z
+ad1e5bf01891c35380f44adcbaa1b66d
+2011-04-14T08:07:04.000000Z
+969
+cstroe1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+328
+
+test
+dir
+

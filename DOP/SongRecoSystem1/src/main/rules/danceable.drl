@@ -1,0 +1,62 @@
+//created on: Oct 20, 2012
+package songrecosystem
+
+//list any import classes here.
+import newEntities.SongData;
+import newEntities.SongAlbums;
+import rules.RuleClass.Message;
+import org.hibernate.Query;
+import java.util.Iterator;
+import java.util.List;
+import java.lang.String;
+
+//declare any global variables here
+global org.hibernate.Session hbSession;
+
+
+
+rule "danceeable"
+
+    when
+        //conditions
+        m : Message( message.equals("DanceableByLocation") )
+    then
+        //actions
+        //obj:Object[] from hbSession.createQuery("select s.songTitle, a.artistName from SongData s inner join s.songArtists a where a.artistLocation like '%:loc%' order by s.songDanceability desc limit 100").setParameter("loc","India").list();
+        //System.out.println("Song:" + song.getSongTitle() + " Artist:" + artist.getArtistName());
+        
+        String location = "India";
+        
+		String sql_query = "select s.songTitle, a.artistName " +
+				"from SongData s " +
+				"inner join s.songArtists a " +
+				"where a.artistLocation like '%" + location + 
+				"%' order by s.songDanceability desc limit 100";
+		
+		Query query = hbSession.createQuery(sql_query);
+		List result = query.list();
+		
+		System.out.println("Results:" + result.size());
+		
+		Iterator iter = result.iterator();
+		
+		while(iter.hasNext()){
+			Object[] retrieved = (Object[]) iter.next();
+			System.out.print("Song: " + retrieved[0] + " Artist:" + retrieved[1]);
+			System.out.println("");
+		}
+end
+
+rule "albumsperyear"
+    //include attributes such as "salience" here...
+     
+    when
+        m : Message( message.equals("AlbumsByYear"))
+    then
+        //actions
+        Query query = hbSession.createQuery("from SongAlbums al inner join al.songArtists a where a.artistId=:aId").setParameter("aId","artist_100046");
+        List result = query.list();
+        SongAlbums albums = (SongAlbums) result.get(0);
+		System.out.print("Song Albums: " + albums.getAlbumName());
+		
+end

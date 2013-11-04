@@ -1,0 +1,55 @@
+10
+
+dir
+2649
+svn+ssh://advis.cs.uic.edu/home/svn/am1-repos/branches/PatitionMatching/AgreementMaker/src/am/tools
+svn+ssh://advis.cs.uic.edu/home/svn/am1-repos
+
+
+
+2012-07-31T20:59:57.648845Z
+2495
+cosmin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+7382cb04-bbc8-4b6b-befe-3e25d6a70fed
+
+AlignmentViewer
+dir
+
+ExportSimilarityMatrix
+dir
+
+LexiconLookup
+dir
+
+SGMLParser
+dir
+
+StatementTranslator
+dir
+
+ThresholdAnalysis
+dir
+
+WordNetLookup
+dir
+
+finder
+dir
+
+seals
+dir
+

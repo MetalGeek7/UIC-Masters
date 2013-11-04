@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 20, 2012 3:07:20 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="newEntities.ArtistRating" table="artist_rating" catalog="songrecosystem">
+        <composite-id name="id" class="newEntities.ArtistRatingId">
+            <key-property name="userId" type="string">
+                <column name="user_id" length="15" />
+            </key-property>
+            <key-property name="artistId" type="string">
+                <column name="artist_id" length="15" />
+            </key-property>
+            <key-property name="artistRating" type="java.lang.Integer">
+                <column name="artist_rating" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="songArtists" class="newEntities.SongArtists" update="false" insert="false" fetch="select">
+            <column name="artist_id" length="15" />
+        </many-to-one>
+        <many-to-one name="userData" class="newEntities.UserData" update="false" insert="false" fetch="select">
+            <column name="user_id" length="15" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

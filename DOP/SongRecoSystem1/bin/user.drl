@@ -1,0 +1,182 @@
+//created on: Dec 7, 2012
+package songrecosystem
+
+//list any import classes here.
+import MongoEntities.UserBean;
+import dop.musicreco.UserOperation;
+import java.util.List;
+global java.sql.Statement statement;
+import dop.musicreco.ListResult;
+//declare any global variables here
+
+global   newEntities.SongArtists location;
+global  java.lang.Integer count;
+
+
+
+
+rule "Getting user song likes"
+agenda-group "FetchSongsLiked"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user song likes");
+		result.setList(UserOperation.fetchSongsLiked($user.getUserId()));
+end
+
+rule "Getting user songs purchased"
+agenda-group "FetchSongsPurchased"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user songs purchased");
+		result.setList(UserOperation.fetchSongsShared($user.getUserId()));
+end
+
+rule "Getting user songs shared"
+agenda-group "FetchSongsShared"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user songs shared");
+		result.setList(UserOperation.fetchSongsShared($user.getUserId()));
+end
+
+
+
+
+rule "Getting user album likes"
+agenda-group "FetchAlbumsLiked"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user album likes");
+		result.setList(UserOperation.fetchAlbumsLiked($user.getUserId()));
+	//	retract($user);
+end
+
+rule "Getting user albums shared"
+agenda-group "FetchAlbumsShared"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user albums shared");
+		result.setList(UserOperation.fetchAlbumsShared($user.getUserId()));
+
+end
+
+rule "Getting user albums purchased"
+agenda-group "FetchAlbumsPurchased"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user albums purchased");
+		result.setList(UserOperation.fetchAlbumsShared($user.getUserId()));
+end
+
+rule "Getting user artists liked"
+agenda-group "FetchArtistsLiked"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user artists purchased");
+		result.setList(UserOperation.fetchArtistsLiked($user.getUserId()));
+end
+
+rule "Getting user songs genre liked"
+agenda-group "FetchSongsGenreLiked"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user user songs genre liked");
+		result.setList(UserOperation.fetchSongsGenreLiked($user.getUserId()));
+end
+
+
+rule "Getting user songs genre shared"
+agenda-group "FetchSongsGenreShared"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user user songs genre shared");
+		result.setList(UserOperation.fetchSongsGenreShared($user.getUserId()));
+end
+
+rule "Getting user songs genre purchased"
+agenda-group "FetchSongsGenrePurchased"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user user songs genre purchased");
+		result.setList(UserOperation.fetchSongsGenrePurchased($user.getUserId()));
+end
+
+//////albums
+
+rule "Getting user albums genre liked"
+agenda-group "FetchAlbumsGenreLiked"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user user albums genre liked");
+		$user.setSonggenreliked(UserOperation.fetchAlbumsGenreLiked($user.getUserId()));
+end
+
+
+rule "Getting user albums genre shared"
+agenda-group "FetchAlbumsGenreShared"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+   	 then
+   	 	ListResult result = new ListResult();
+        System.out.println("Getting user user albums genre shared");
+		result.setList(UserOperation.fetchAlbumsGenreShared($user.getUserId()));
+end
+
+rule "Getting user albums genre purchased"
+agenda-group "FetchAlbumsGenrePurchased"
+auto-focus false
+    when
+    $user:UserBean();
+        //conditions
+    then
+    	ListResult result = new ListResult();
+        System.out.println("Getting user user albums genre purchased");
+		result.setList(UserOperation.fetchAlbumsGenrePurchased($user.getUserId()));
+end
+

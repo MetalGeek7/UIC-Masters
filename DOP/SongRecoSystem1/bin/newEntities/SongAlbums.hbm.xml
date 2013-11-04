@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 20, 2012 3:07:20 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="newEntities.SongAlbums" table="song_albums" catalog="songrecosystem">
+        <id name="albumId" type="string">
+            <column name="album_id" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="songArtists" class="newEntities.SongArtists" fetch="select">
+            <column name="album_artist_id" length="15" />
+        </many-to-one>
+        <many-to-one name="genre" class="newEntities.Genre" fetch="select">
+            <column name="album_genre_id" length="15" />
+        </many-to-one>
+        <property name="albumName" type="string">
+            <column name="album_name" length="20" />
+        </property>
+        <property name="albumReleaseYear" type="string">
+            <column name="album_release_year" length="4" />
+        </property>
+        <property name="albumCost" type="big_decimal">
+            <column name="album_cost" precision="5" />
+        </property>
+        <set name="albumsShareds" table="albums_shared" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.AlbumsShared" />
+        </set>
+        <set name="albumsPurchaseds" table="albums_purchased" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.AlbumsPurchased" />
+        </set>
+        <set name="songDatas" table="song_data" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_album_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongData" />
+        </set>
+        <set name="albumsLikeds" table="albums_liked" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.AlbumsLiked" />
+        </set>
+        <set name="albumRatings" table="album_rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.AlbumRating" />
+        </set>
+    </class>
+</hibernate-mapping>

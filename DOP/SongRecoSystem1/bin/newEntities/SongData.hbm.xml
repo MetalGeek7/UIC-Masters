@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 20, 2012 3:07:20 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="newEntities.SongData" table="song_data" catalog="songrecosystem">
+        <id name="songId" type="string">
+            <column name="song_id" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="songArtists" class="newEntities.SongArtists" fetch="select">
+            <column name="song_artist_id" length="15" />
+        </many-to-one>
+        <many-to-one name="genre" class="newEntities.Genre" fetch="select">
+            <column name="song_genre_id" length="15" />
+        </many-to-one>
+        <many-to-one name="songAlbums" class="newEntities.SongAlbums" fetch="select">
+            <column name="song_album_id" length="15" />
+        </many-to-one>
+        <property name="songTitle" type="string">
+            <column name="song_title" length="50" />
+        </property>
+        <property name="yearOfRelease" type="string">
+            <column name="year_of_release" length="4" />
+        </property>
+        <property name="songCost" type="big_decimal">
+            <column name="song_cost" precision="5" />
+        </property>
+        <property name="songDuration" type="big_decimal">
+            <column name="song_duration" precision="5" />
+        </property>
+        <property name="songHotness" type="big_decimal">
+            <column name="song_hotness" precision="5" />
+        </property>
+        <property name="songDanceability" type="big_decimal">
+            <column name="song_danceability" precision="5" />
+        </property>
+        <property name="songEnergy" type="big_decimal">
+            <column name="song_energy" precision="5" />
+        </property>
+        <property name="songTempo" type="big_decimal">
+            <column name="song_tempo" precision="5" />
+        </property>
+        <set name="songsShareds" table="songs_shared" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongsShared" />
+        </set>
+        <set name="userPlaycounts" table="user_playcount" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.UserPlaycount" />
+        </set>
+        <set name="songsLikeds" table="songs_liked" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongsLiked" />
+        </set>
+        <set name="songsPurchaseds" table="songs_purchased" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongsPurchased" />
+        </set>
+        <set name="songRatings" table="song_rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongRating" />
+        </set>
+    </class>
+</hibernate-mapping>

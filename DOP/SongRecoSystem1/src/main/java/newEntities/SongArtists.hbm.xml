@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 20, 2012 3:07:20 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="newEntities.SongArtists" table="song_artists" catalog="songrecosystem">
+        <id name="artistId" type="string">
+            <column name="artist_id" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="genre" class="newEntities.Genre" fetch="select">
+            <column name="artist_genre_id" length="15" />
+        </many-to-one>
+        <property name="artistName" type="string">
+            <column name="artist_name" length="15" />
+        </property>
+        <property name="artistDob" type="string">
+            <column name="artist_dob" length="4" />
+        </property>
+        <property name="artistLocation" type="string">
+            <column name="artist_location" length="30" />
+        </property>
+        <set name="artistsLikeds" table="artists_liked" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="artist_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.ArtistsLiked" />
+        </set>
+        <set name="songDatas" table="song_data" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_artist_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongData" />
+        </set>
+        <set name="artistRatings" table="artist_rating" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="artist_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.ArtistRating" />
+        </set>
+        <set name="songAlbumses" table="song_albums" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_artist_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongAlbums" />
+        </set>
+    </class>
+</hibernate-mapping>

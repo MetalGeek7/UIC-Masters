@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 11, 2012 5:59:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="testConnection">
+ <class catalog="test" name="Student" table="student">
+  <id name="uin" type="long">
+   <column name="UIN"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="name" type="string">
+   <column length="30" name="name"/>
+  </property>
+  <property generated="never" lazy="false" name="age" type="java.lang.Integer">
+   <column name="age"/>
+  </property>
+  <property generated="never" lazy="false" name="school" type="string">
+   <column length="50" name="school"/>
+  </property>
+ </class>
+</hibernate-mapping>

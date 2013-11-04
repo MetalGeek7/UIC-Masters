@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 20, 2012 3:07:20 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="newEntities.Genre" table="genre" catalog="songrecosystem">
+        <id name="genreId" type="string">
+            <column name="genre_id" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="genreName" type="string">
+            <column name="genre_name" length="20" />
+        </property>
+        <set name="songArtistses" table="song_artists" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="artist_genre_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongArtists" />
+        </set>
+        <set name="songDatas" table="song_data" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="song_genre_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongData" />
+        </set>
+        <set name="songAlbumses" table="song_albums" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="album_genre_id" length="15" />
+            </key>
+            <one-to-many class="newEntities.SongAlbums" />
+        </set>
+    </class>
+</hibernate-mapping>

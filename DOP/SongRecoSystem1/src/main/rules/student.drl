@@ -1,0 +1,38 @@
+//created on: Oct 12, 2012
+package StudentRule
+
+//list any import classes here.
+import testConnection.Student;
+
+//declare any global variables here
+
+rule "Nitin"
+
+    when
+        //conditions
+        Student(name == "Nitin")
+    then
+        //actions
+        System.out.println("Nitin");
+
+end
+
+rule "Vivek"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+        Student(name == "Vivek")
+    then
+        //actions
+        System.out.println("Vivek");
+end
+
+rule "Parth"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+        Student(name == "Parth")
+    then
+        //actions
+        System.out.println("Parth");
+end

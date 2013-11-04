@@ -1,0 +1,40 @@
+//created on: Oct 12, 2012
+
+
+//list any import classes here.
+/*
+import testConnection.*;
+
+//declare any global variables here
+
+rule "Nitin"
+
+    when
+        //conditions
+        SongAlbums(albumReleaseYear=="2008")
+    then
+        //actions
+        System.out.println("Nitin");
+
+end
+
+rule "Vivek"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+        AlbumRatingId(albumRating>4)
+    then
+        //actions
+        System.out.println("Vivek");
+end
+
+rule "Parth"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+        AlbumRatingId(albumRating>4)
+    then
+        //actions
+        System.out.println("Parth");
+end
+*/

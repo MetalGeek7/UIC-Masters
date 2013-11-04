@@ -1,0 +1,29 @@
+//created on: Oct 13, 2012
+package songrecsystem
+
+//list any import classes here.
+import newEntities.SongArtists;
+
+//declare any global variables here
+
+rule "India"
+
+    when
+        //conditions
+        SongArtists( artistLocation.equals("India"), aName : artistName )
+    then
+        //actions
+        System.out.println("From India:" + aName);
+
+end
+
+rule "Italy"
+
+    when
+        //conditions
+        SongArtists( artistLocation.equals("Italy"), aName : artistName )
+    then
+        //actions
+        System.out.println("From Italy:" + aName);
+
+end

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">org.gjt.mm.mysql.Driver</property>
+  <property name="hibernate.connection.password">tejas</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/songrecosystem</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+  <mapping class="newEntities.SongAlbums" package="newEntities" resource="newEntities/SongAlbums.hbm.xml"/>
+  <mapping class="newEntities.AlbumsShared" package="newEntities" resource="newEntities/AlbumsShared.hbm.xml"/>
+  <mapping class="newEntities.AlbumRating" package="newEntities" resource="newEntities/AlbumRating.hbm.xml"/>
+  <mapping class="newEntities.AlbumsLiked" package="newEntities" resource="newEntities/AlbumsLiked.hbm.xml"/>
+  <mapping class="newEntities.AlbumsPurchased" package="newEntities" resource="newEntities/AlbumsPurchased.hbm.xml"/>
+  <mapping class="newEntities.SongRating" package="newEntities" resource="newEntities/SongRating.hbm.xml"/>
+  <mapping class="newEntities.SongsShared" package="newEntities" resource="newEntities/SongsShared.hbm.xml"/>
+  <mapping class="newEntities.SongsLiked" package="newEntities" resource="newEntities/SongsLiked.hbm.xml"/>
+  <mapping class="newEntities.SongsPurchased" package="newEntities" resource="newEntities/SongsPurchased.hbm.xml"/>
+  <mapping class="newEntities.SongData" package="newEntities" resource="newEntities/SongData.hbm.xml"/>
+  <mapping class="newEntities.Genre" package="newEntities" resource="newEntities/Genre.hbm.xml"/>
+  <mapping class="newEntities.SongArtists" package="newEntities" resource="newEntities/SongArtists.hbm.xml"/>
+  <mapping class="newEntities.ArtistsLiked" package="newEntities" resource="newEntities/ArtistsLiked.hbm.xml"/>
+  <mapping class="newEntities.ArtistRating" package="newEntities" resource="newEntities/ArtistRating.hbm.xml"/>
+  <mapping class="newEntities.UserPlaycount" package="newEntities" resource="newEntities/UserPlaycount.hbm.xml"/>
+  <mapping class="newEntities.UserData" package="newEntities" resource="newEntities/UserData.hbm.xml"/>
+  <mapping class="newEntities.UserSecurity" package="newEntities" resource="newEntities/UserSecurity.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

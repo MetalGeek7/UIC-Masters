@@ -1,0 +1,47 @@
+//created on: Nov 4, 2012
+package request
+/*
+//list any import classes here.
+import testConnection.requestType;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+//declare any global variables here
+//global org.hibernate.Query query;
+global org.hibernate.Session session;
+
+global java.util.list results;
+
+/*function void insertInMemory(WorkingMemory w,Object[] list)
+{
+for(i=0;i<list.size();i++)
+{
+w.insert(list[i]);
+}
+}*/
+/*
+rule "Song Request"
+
+    when
+        //conditions
+      // $req:requestType(bSongs==true,bGenre==false,bArtists==false )
+        
+    then
+        //actions
+     // results= session.createQuery("from testConnection.SongsData").toList();
+    //  insertinMemory(drools.workingMemory,results);
+      
+      
+        
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end*/

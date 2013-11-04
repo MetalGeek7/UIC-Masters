@@ -1,0 +1,172 @@
+package rules
+
+import MongoEntities.SongBean;
+import MongoEntities.ArtistDataBean;
+import MongoEntities.AlbumBean;
+import dop.musicreco.SongOperation;
+import dop.musicreco.ArtistOperation;
+import dop.musicreco.AlbumOperation;
+import dop.musicreco.ListResult;
+import java.util.List;
+
+global java.sql.Statement statement;
+
+rule "A stand alone rule"
+agenda-group "Likes"
+auto-focus false
+    when
+	$s:SongBean()
+    then
+    System.out.println($s.getLikedCount());
+    System.out.println("Executing rule to update song likes");
+	SongOperation.updateUser($s.getSongID(),"LikedCount" ,$s.getLikedCount()+"");
+	System.out.println(" leaving mongo.drl ");
+end
+
+rule "Fetch Song Data using artistID"
+agenda-group "SongFromArtist"
+auto-focus false
+    when
+	$s:SongBean()
+    then
+    System.out.println("Executing rule to fetch song data based on artist");
+    ListResult result = new ListResult();
+	result.setList(SongOperation.getSongData("ArtistID", $s.getArtistID()));
+end
+
+rule "Fetch Song Data using albumID"
+agenda-group "SongFromAlbum"
+auto-focus false
+    when
+	$s:SongBean()
+    then
+    System.out.println("Executing rule to fetch song data based on artist");
+    ListResult result = new ListResult();
+	result.setList(SongOperation.getSongData("AlbumID", $s.getAlbumID()));
+end
+
+rule "Fetch Song Data using songID"
+agenda-group "SongData"
+auto-focus false
+    when
+	$s:SongBean()
+    then
+    System.out.println("Executing rule to fetch song data based on song id");
+    ListResult result = new ListResult();
+	result.setList(SongOperation.getSongData("SongID", $s.getSongID()));
+end
+
+rule "Fetch Song Data using genreID"
+agenda-group "SongFromGenre"
+auto-focus false
+    when
+	$s:SongBean()
+    then
+    System.out.println("Executing rule to fetch song data based on genre");
+    ListResult result = new ListResult();
+	result.setList(SongOperation.getSongData("GenreID", $s.getGenreID()));
+end
+
+rule "Fetch Artist Data using genreID"
+agenda-group "ArtistFromGenre"
+auto-focus false
+    when
+	$artist:ArtistDataBean()
+    then
+    System.out.println("Executing rule to fetch artist data based on genre");
+    ListResult result = new ListResult();
+	result.setList(ArtistOperation.getArtistData("ArtistGenre",$artist.getArtistGenreId()));
+end
+
+rule "Fetch Album Data using genreID"
+agenda-group "AlbumFromGenre"
+auto-focus false
+    when
+	$album:AlbumBean()
+    then
+    System.out.println("Executing rule to fetch album data based on genre");
+    ListResult result = new ListResult();
+	result.setList(AlbumOperation.getAlbumData("AlbumGenreID", $album.getAlbumGenre()));
+end
+
+/*rule "Similar artist rule"
+agenda-group "Sim"
+auto-focus false
+    when
+	$artist:ArtistDataBean()
+    then
+    System.out.println("Executing rule to fetch similar artist data based on artist");
+    ListResult result = new ListResult();
+	result.setList(ArtistOperation.getSimilarArtist($artist.getArtistId()));
+end
+*/
+rule "Fetch Artist data"
+agenda-group "ArtistDetails"
+auto-focus false
+    when
+	$artist:ArtistDataBean()
+    then
+    System.out.println("Executing rule to fetch artist data based on artist id");
+    ListResult result = new ListResult();
+	result.setList(ArtistOperation.getArtistData("ArtistID",$artist.getArtistId()));
+end
+
+rule "Fetch Album data"
+agenda-group "AlbumDetails"
+auto-focus false
+    when
+	$album:AlbumBean()
+    then
+    System.out.println("Executing rule to fetch album data based on album id");
+	//ArtistOperation.getArtistData($artist.getArtistId());
+	ListResult result = new ListResult();
+	result.setList(AlbumOperation.getAlbumData("AlbumID", $album.getAlbumId()));
+end
+
+rule "Fetch Album data using artistID"
+agenda-group "AlbumFromArtist"
+auto-focus false
+    when
+	$album:AlbumBean()
+    then
+    System.out.println("Executing rule to fetch album data based on artist id");
+	//ArtistOperation.getArtistData($artist.getArtistId());
+	ListResult result = new ListResult();
+	result.setList(AlbumOperation.getAlbumData("AlbumArtistID", $album.getAlbumArtist()));
+end
+
+rule "Fetch most grossed songs"
+agenda-group "FetchMostGrossedSongs"
+auto-focus false
+	when
+	//$user:UserBean()
+	then
+	ListResult result = new ListResult();
+	System.out.println("Executing rule to fetch top 100 most grossed songs");
+	result.setList(SongOperation.fetchMostGrossedSongs());
+end
+
+
+rule "Fetch most grossed albums"
+agenda-group "FetchMostGrossedAlbums"
+auto-focus false
+	when
+	//$user:UserBean()
+	then
+	ListResult result = new ListResult();
+	System.out.println("Executing rule to fetch top 100 most grossed albums");
+	result.setList(AlbumOperation.fetchMostGrossedAlbums());
+end
+
+
+
+rule "Fetch most popular albums"
+agenda-group "FetchMostPopularAlbums"
+auto-focus false
+	when
+	//$user:UserBean()
+	then
+	ListResult result = new ListResult();
+	System.out.println("Executing rule to fetch top 100 most grossed albums");
+	result.setList(AlbumOperation.FetchMostPopularAlbums());
+end

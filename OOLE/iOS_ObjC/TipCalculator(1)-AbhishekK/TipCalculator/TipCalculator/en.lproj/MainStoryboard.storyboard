@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Original Amount ($):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zee-og-gt2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="wwL-oN-7wz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ub-2e-7iT">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="A5q-2C-SOK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="onBillAmountChange:" destination="2" eventType="editingDidEnd" id="DS2-DY-MMf"/>
+                                    <action selector="validateFloatVal:" destination="2" eventType="editingDidEnd" id="jyR-QF-lRo"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tip % :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZV-Bm-I4L">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148" id="0r1-qA-oyZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5JX-mS-4rQ">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="YjT-hg-e6q">
+                                <connections>
+                                    <action selector="stepperValChange:" destination="2" eventType="valueChanged" id="wQc-g0-cFm"/>
+                                </connections>
+                            </stepper>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Vu-nZ-Jyl">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="tipAmountChange:" destination="2" eventType="editingDidEnd" id="QQu-cp-3ia"/>
+                                    <action selector="validateTipVal:" destination="2" eventType="editingDidEnd" id="7Uj-DN-4FA"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tip Amount ($): " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAw-vH-yef">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="8u8-zN-Hw5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIy-9l-BTo">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Calculate Total">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="calculateTotalBill:" destination="2" eventType="touchDown" id="SmM-IK-SZd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2p6-O4-42G">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148" id="l5Q-JG-G41"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="15% Standard Tip">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="standardTipApplied:" destination="2" eventType="touchDown" id="Zsc-3G-Zud"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgF-be-YC4">
+                                <items>
+                                    <navigationItem title="Tip Calculator" id="3Wp-CO-kNe"/>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KtN-fE-j33">
+                                <items>
+                                    <barButtonItem title="Exit" width="46" id="U61-4h-pMZ">
+                                        <connections>
+                                            <action selector="closeAppln:" destination="2" id="dv5-gN-qYS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYl-PN-MHt">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Total ($):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfU-b5-p5w">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="3sw-uH-cci"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.3347678167990773" green="1" blue="0.79543372137211033" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KtN-fE-j33" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="0pC-ex-eNa"/>
+                            <constraint firstItem="QAw-vH-yef" firstAttribute="leading" secondItem="JfU-b5-p5w" secondAttribute="leading" type="default" id="2bF-jA-q8X"/>
+                            <constraint firstAttribute="bottom" secondItem="2p6-O4-42G" secondAttribute="bottom" constant="96" id="5lb-VQ-P0K"/>
+                            <constraint firstItem="4Ub-2e-7iT" firstAttribute="leading" secondItem="5JX-mS-4rQ" secondAttribute="leading" type="default" id="6Nc-Dy-tZR"/>
+                            <constraint firstItem="gYl-PN-MHt" firstAttribute="leading" secondItem="4Vu-nZ-Jyl" secondAttribute="leading" type="default" id="8mo-8W-upu"/>
+                            <constraint firstItem="YjT-hg-e6q" firstAttribute="top" secondItem="5JX-mS-4rQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9dR-HV-MCK"/>
+                            <constraint firstItem="5JX-mS-4rQ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="117" id="9k1-as-gto"/>
+                            <constraint firstItem="4Vu-nZ-Jyl" firstAttribute="leading" secondItem="YjT-hg-e6q" secondAttribute="leading" type="default" id="Am3-vU-eq0"/>
+                            <constraint firstItem="qgF-be-YC4" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Gaz-Rm-sW1"/>
+                            <constraint firstItem="IIy-9l-BTo" firstAttribute="baseline" secondItem="2p6-O4-42G" secondAttribute="baseline" type="default" id="Gd7-MM-108"/>
+                            <constraint firstItem="qgF-be-YC4" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="I7A-Tg-a87"/>
+                            <constraint firstItem="5JX-mS-4rQ" firstAttribute="trailing" secondItem="4Ub-2e-7iT" secondAttribute="trailing" type="default" id="O06-uz-1hQ"/>
+                            <constraint firstItem="IIy-9l-BTo" firstAttribute="trailing" secondItem="gYl-PN-MHt" secondAttribute="trailing" type="default" id="TRz-0t-bsa"/>
+                            <constraint firstItem="4Ub-2e-7iT" firstAttribute="top" secondItem="3" secondAttribute="top" constant="76" id="TiP-yK-ebR"/>
+                            <constraint firstItem="XZV-Bm-I4L" firstAttribute="top" secondItem="3" secondAttribute="top" constant="121" id="Utb-n7-Fen"/>
+                            <constraint firstItem="zee-og-gt2" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="14" id="aN2-ab-UxS"/>
+                            <constraint firstItem="2p6-O4-42G" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="9" id="ahS-sA-KIZ"/>
+                            <constraint firstItem="zee-og-gt2" firstAttribute="top" secondItem="3" secondAttribute="top" constant="80" id="bpG-Vn-rkg"/>
+                            <constraint firstItem="KtN-fE-j33" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="dFx-ir-TOO"/>
+                            <constraint firstItem="KtN-fE-j33" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="dbJ-Lr-wbz"/>
+                            <constraint firstItem="4Vu-nZ-Jyl" firstAttribute="trailing" secondItem="5JX-mS-4rQ" secondAttribute="trailing" type="default" id="gPs-qY-t8N"/>
+                            <constraint firstItem="4Vu-nZ-Jyl" firstAttribute="top" secondItem="3" secondAttribute="top" constant="199" id="ipj-kX-o0f"/>
+                            <constraint firstItem="QAw-vH-yef" firstAttribute="top" secondItem="3" secondAttribute="top" constant="203" id="jnB-ZM-lZo"/>
+                            <constraint firstAttribute="trailing" secondItem="4Ub-2e-7iT" secondAttribute="trailing" constant="14" id="mWr-SI-1If"/>
+                            <constraint firstItem="qgF-be-YC4" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="mhv-E9-xJq"/>
+                            <constraint firstItem="5JX-mS-4rQ" firstAttribute="leading" secondItem="YjT-hg-e6q" secondAttribute="leading" type="default" id="puV-gz-vUh"/>
+                            <constraint firstAttribute="bottom" secondItem="gYl-PN-MHt" secondAttribute="bottom" constant="184" id="vUG-XZ-TqF"/>
+                            <constraint firstItem="4Vu-nZ-Jyl" firstAttribute="trailing" secondItem="gYl-PN-MHt" secondAttribute="trailing" type="default" id="wge-U1-svI"/>
+                            <constraint firstItem="QAw-vH-yef" firstAttribute="leading" secondItem="XZV-Bm-I4L" secondAttribute="leading" type="default" id="wrr-8h-cuC"/>
+                            <constraint firstItem="JfU-b5-p5w" firstAttribute="baseline" secondItem="gYl-PN-MHt" secondAttribute="baseline" type="default" id="wxO-BQ-5hV"/>
+                            <constraint firstItem="XZV-Bm-I4L" firstAttribute="leading" secondItem="zee-og-gt2" secondAttribute="leading" type="default" id="xXt-7Y-2BN"/>
+                        </constraints>
+                        <connections>
+                            <action selector="backgrndTouched:" destination="2" eventType="touchDown" id="QND-q3-UBP"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="originalAmt" destination="4Ub-2e-7iT" id="jiH-MH-GI2"/>
+                        <outlet property="tipAmount" destination="4Vu-nZ-Jyl" id="Lhx-ba-A2h"/>
+                        <outlet property="tipPercent" destination="5JX-mS-4rQ" id="KtR-BG-b30"/>
+                        <outlet property="tipStepper" destination="YjT-hg-e6q" id="xp3-eE-oiI"/>
+                        <outlet property="totalAmount" destination="gYl-PN-MHt" id="aSp-Xi-P3h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgrndTouched:"/>
+                <relationship kind="action" name="calculateTotalBill:"/>
+                <relationship kind="action" name="closeAppln:"/>
+                <relationship kind="action" name="onBillAmountChange:"/>
+                <relationship kind="action" name="standardTipApplied:"/>
+                <relationship kind="action" name="stepperValChange:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="action" name="tipAmountChange:"/>
+                <relationship kind="action" name="validateFloatVal:"/>
+                <relationship kind="action" name="validateTipVal:"/>
+                <relationship kind="outlet" name="originalAmt" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tipAmount" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tipPercent" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tipStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="totalAmount" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

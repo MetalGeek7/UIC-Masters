@@ -1,0 +1,261 @@
+[Diagram:]
+OffsetX=0
+OffsetY=0
+Visibility=0
+ShowAssoc=1
+
+[Box:  - ::agreementDocument]
+X=1045
+Y=40
+
+[Box:  - ::agreementMaker]
+X=1250
+Y=40
+
+[Box:  - ::mappingEngine]
+X=635
+Y=40
+
+[Box:  - ::ontologyParser]
+X=430
+Y=40
+
+[Box:  - ::stemmer]
+X=225
+Y=40
+
+[Box:  - ::test]
+X=1455
+Y=40
+
+[Box:  - ::userInterface]
+X=20
+Y=40
+
+[Box:  - ::vertex]
+X=840
+Y=40
+
+[Diagram:]
+OffsetX=0
+OffsetY=0
+Visibility=2
+ShowAssoc=1
+
+[Box: ::agreementDocument - ::agreementDocument::AgreementDocumentReader]
+X=19
+Y=132
+
+[Box: ::agreementDocument - ::agreementDocument::DocumentProducer]
+X=19
+Y=40
+
+[Box: ::agreementDocument - ::vertex::Vertex]
+X=17
+Y=32
+Visible=0
+
+[Diagram: ::agreementDocument]
+OffsetX=0
+OffsetY=0
+Visibility=2
+ShowAssoc=1
+
+[Box: ::agreementMaker - ::agreementMaker::GSM]
+X=20
+Y=104
+
+[Box: ::agreementMaker - ::agreementMaker::Main]
+X=20
+Y=40
+
+[Diagram: ::agreementMaker]
+OffsetX=0
+OffsetY=0
+Visibility=1
+ShowAssoc=1
+
+[Box: ::mappingEngine - ::<<Unknown>>::Serializable]
+X=224
+Y=480
+
+[Box: ::mappingEngine - ::mappingEngine::ContextMapping]
+X=14
+Y=41
+
+[Box: ::mappingEngine - ::mappingEngine::DefComparator]
+X=267
+Y=311
+
+[Box: ::mappingEngine - ::mappingEngine::DefnMapping]
+X=12
+Y=510
+
+[Box: ::mappingEngine - ::mappingEngine::MappingAction]
+X=267
+Y=41
+
+[Box: ::mappingEngine - ::mappingEngine::MappingType]
+X=271
+Y=560
+
+[Box: ::mappingEngine - ::mappingEngine::UserMapping]
+X=12
+Y=273
+
+[Box: ::mappingEngine - ::vertex::Vertex]
+X=14
+Y=132
+Visible=0
+
+[Diagram: ::mappingEngine]
+OffsetX=0
+OffsetY=0
+Visibility=2
+ShowAssoc=1
+
+[Box: ::ontologyParser - ::ontologyParser::OntoTreeBuilder]
+X=234
+Y=295
+
+[Box: ::ontologyParser - ::ontologyParser::RdfsTreeBuilder]
+X=29
+Y=294
+
+[Box: ::ontologyParser - ::ontologyParser::TreeBuilder]
+X=234
+Y=43
+
+[Box: ::ontologyParser - ::ontologyParser::XmlTreeBuilder]
+X=437
+Y=299
+
+[Box: ::ontologyParser - ::vertex::Vertex]
+X=434
+Y=15
+Visible=0
+
+[Diagram: ::ontologyParser]
+OffsetX=0
+OffsetY=0
+Visibility=2
+ShowAssoc=1
+
+[Box: ::userInterface - ::<<Unknown>>::ActionListener]
+X=392
+Y=624
+
+[Box: ::userInterface - ::<<Unknown>>::ChangeListener]
+X=39
+Y=36
+
+[Box: ::userInterface - ::<<Unknown>>::ItemListener]
+X=181
+Y=621
+
+[Box: ::userInterface - ::<<Unknown>>::JApplet]
+X=529
+Y=97
+
+[Box: ::userInterface - ::<<Unknown>>::JPanel]
+X=642
+Y=29
+
+[Box: ::userInterface - ::<<Unknown>>::ListSelectionListener]
+X=610
+Y=807
+
+[Box: ::userInterface - ::<<Unknown>>::MouseListener]
+X=887
+Y=32
+
+[Box: ::userInterface - ::<<Unknown>>::WindowAdapter]
+X=20
+Y=40
+Visible=0
+
+[Box: ::userInterface - ::userInterface::Canvas]
+X=889
+Y=109
+
+[Box: ::userInterface - ::userInterface::Colors]
+X=34
+Y=138
+
+[Box: ::userInterface - ::userInterface::Legend]
+X=268
+Y=48
+
+[Box: ::userInterface - ::userInterface::OpenOntologyFileDialog]
+X=629
+Y=637
+
+[Box: ::userInterface - ::userInterface::UI]
+X=571
+Y=213
+
+[Box: ::userInterface - ::userInterface::UIMenu]
+X=33
+Y=381
+
+[Box: ::userInterface - ::userInterface::WindowEventHandler]
+X=20
+Y=525
+Visible=0
+
+[Box: ::userInterface - ::vertex::Vertex]
+X=1122
+Y=104
+Visible=0
+
+[Diagram: ::userInterface]
+OffsetX=0
+OffsetY=0
+Visibility=2
+ShowAssoc=1
+
+[Box: ::vertex - ::<<Unknown>>::DefaultMutableTreeNode]
+X=223
+Y=43
+
+[Box: ::vertex - ::<<Unknown>>::JPanel]
+X=231
+Y=531
+
+[Box: ::vertex - ::<<Unknown>>::Serializable]
+X=263
+Y=414
+
+[Box: ::vertex - ::mappingEngine::ContextMapping]
+X=283
+Y=35
+Visible=0
+
+[Box: ::vertex - ::mappingEngine::DefnMapping]
+X=296
+Y=527
+Visible=0
+
+[Box: ::vertex - ::mappingEngine::UserMapping]
+X=296
+Y=270
+Visible=0
+
+[Box: ::vertex - ::vertex::OntVertexDescription]
+X=228
+Y=291
+
+[Box: ::vertex - ::vertex::Vertex]
+X=20
+Y=40
+
+[Box: ::vertex - ::vertex::VertexDescriptionPane]
+X=230
+Y=659
+
+[Diagram: ::vertex]
+OffsetX=0
+OffsetY=0
+Visibility=2
+ShowAssoc=1
+
