@@ -1,0 +1,29 @@
+CS 450:Intro to Networking - HW3
+Abhishek Kanchan
+
+Q1: 951057939 
+ 
+Q2: AAAA (IPv6 address)
+
+Q3: 26484bd36b067db01d8857d8d56862ee  funny-pictures-kitten-says-hello.jpg
+
+Q4: Client IP address-192.168.0.2
+    Server IP - 192.168.0.1
+
+Q5: user
+
+Q6: Sat Nov 27 20:11:43
+
+Q7: ping www.yahoo.com;ls;ls -a;exit
+
+Q8: edmond
+
+Q9: www.cs.uic.edu
+
+Q10: ls;echo Networking is supper supper interested!;ping cs.uic.edu;echo Bye!;exit
+
+Q11: 131.193.34.202;100;ec26434293bd9928f187bf00cb72b2af
+
+Q12: 051f564245e0775bbdfb525329f459fd awesome.pdf
+
+Q13: 
