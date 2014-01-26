@@ -1,0 +1,9 @@
+[SUCCESS] latency=1000ms packet loss=0% [1]: 1 [throughput (kB/s)=0.29]
+[SUCCESS] latency=100ms packet loss=0% [1]: 1 [throughput (kB/s)=3.14]
+[SUCCESS] latency=10ms packet loss=0% [1]: 1 [throughput (kB/s)=31.19]
+[SUCCESS] latency=100ms packet loss=5% [1]: 1 [throughput (kB/s)=2.43]
+[SUCCESS] latency=10ms packet loss=5% [1]: 1 [throughput (kB/s)=11.86]
+[SUCCESS] latency=10ms packet loss=10% [1]: 1 [throughput (kB/s)=0.99]
+Factor: 1.0
+Earned score: 6
+Total score: 6.0
