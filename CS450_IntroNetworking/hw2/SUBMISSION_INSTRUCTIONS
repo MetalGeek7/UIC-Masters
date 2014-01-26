@@ -1,0 +1,15 @@
+
+HW2 : Multithreaded Web server
+
+
+1)All the files inside WWW folder are getting fetched
+
+2)If the user gives arg as WWW/valid-folder then files within it are getting fetched
+eg. WWW/test/dir/some-file name
+
+3) Directory listing on the home dir i.e WWW results in Segmentation fault .......will try to fix it as soon as possible after the submission
+
+
+To run the program: ./hw2 8080 WWW OR ./hw2 8080 WWW/test/(any folder structure)
+
+
