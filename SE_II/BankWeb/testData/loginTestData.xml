@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <!-- password is in md5 form, md5(password) : 5f4dcc3b5aa765d61d8327deb882cf99 -->
+  <accounttype accounttypeid="1" accounttypename="Checkings"/>
+  <accounttype accounttypeid="2" accounttypename="Savings"/>
+  <accounttype accounttypeid="3" accounttypename="Credit"/>
+  <accounttype accounttypeid="4" accounttypename="Rewards"/>
+  <authentication username="apatil4" password="5f4dcc3b5aa765d61d8327deb882cf99"/>
+
+  <branch branchid="1" routingnumber="271070801" branchname="IL"/>
+  <customer customerid="7" username="apatil4" branchid="1"/>
+  <account accountid="7" customerid="7" accounttypeid="1" pin="8888" balance="100000.00"/>
+  <account accountid="13" customerid="7" accounttypeid="2" pin="8888" balance="1000.00"/>
+  <account accountid="19" customerid="7" accounttypeid="3" pin="0" balance="1500.00"/>
+  <account accountid="25" customerid="7" accounttypeid="4" pin="0" balance="0.00"/>
+  <credit cardnumber="8888888888888887" cvv2="888" accountid="19" approvedcredit="1500.00"/>
+
+</dataset>
